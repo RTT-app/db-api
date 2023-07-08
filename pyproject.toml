@@ -1,0 +1,16 @@
+[tool.poetry]
+name = "db-interface"
+version = "1.0.0"
+description = "service that manages mongodb."
+authors = ["jordaoa"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.9"
+flask = "==2.3"
+pymongo = "==4.3.3"
+mongoengine = "==0.27.0"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
