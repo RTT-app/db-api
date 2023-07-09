@@ -16,4 +16,4 @@ connect(
     password='guest',
 )
 
-from app.controllers import db
+from app.controllers import post_controller
