@@ -1,19 +1,24 @@
 from flask import Flask
 from mongoengine import connect
 from flask_pydantic_spec import FlaskPydanticSpec
-#from flask_cors import CORS
+from config.config import (
+                DB,
+                DB_HOST,
+                DB_PORT,
+                DB_USERNAME,
+                DB_PASSWORD
+            )
 
 app = Flask(__name__)
 spec = FlaskPydanticSpec('mongo-crud')
 spec.register(app)
-#CORS(app)
 
 connect(
-    db='reddit-app-db',
-    host='localhost',
-    port=27017,
-    username='guest',
-    password='guest',
+    db=DB,
+    host=DB_HOST,
+    port=DB_PORT,
+    username=DB_USERNAME,
+    password=DB_PASSWORD
 )
 
 from app.controllers import post_controller

@@ -7,4 +7,7 @@ class Post(Document):
     score = IntField(required=True)
 
     def __init__(self, title, self_text, comment, score):
-        pass
+        self.title = title
+        self.self_text = self_text
+        self.comment = comment
+        self.score = score

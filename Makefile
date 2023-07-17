@@ -3,10 +3,12 @@ PYTHON?=$(VENV)/bin/python3
 PIP?=$(PYTHON) -m pip
 
 run:
-	@echo 'run'
+	@echo "\33[0;32m mongo DB API is Running!\033[0;32m"
+	$(PYTHON) src/main.py
+	
 
 docker-up:
-	@docker-compose -f ./src/config/docker/docker-compose.yml up -d
+	@docker-compose up -d
 	@echo 'docker-up'
 
 install-poetry: docker-up
