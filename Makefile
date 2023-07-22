@@ -3,9 +3,9 @@ PYTHON?=$(VENV)/bin/python3
 PIP?=$(PYTHON) -m pip
 
 run:
-	@echo "\33[0;32m mongo DB API is Running!\033[0;32m"
-	$(PYTHON) src/main.py
-	
+	#@echo "\33[0;32m mongo DB API is Running!\033[0;32m"
+	$(PYTHON) bd_interface/src/main.py
+
 
 docker-up:
 	@docker-compose up -d

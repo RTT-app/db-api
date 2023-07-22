@@ -6,7 +6,8 @@ from config.config import (
                 DB_HOST,
                 DB_PORT,
                 DB_USERNAME,
-                DB_PASSWORD
+                DB_PASSWORD,
+                MONGO_URI
             )
 
 app = Flask(__name__)
@@ -16,7 +17,7 @@ spec.register(app)
 connect(
     db=DB,
     host=DB_HOST,
-    port=DB_PORT,
+    port=int(DB_PORT),
     username=DB_USERNAME,
     password=DB_PASSWORD
 )

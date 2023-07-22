@@ -9,8 +9,10 @@ if not Path(dotenv_path).exists():
 
 load_dotenv(dotenv_path)
 
-DB = os.getenv('DB')
+DB = os.getenv('DB_NAME')
 DB_HOST = os.getenv('DB_HOST')
 DB_PORT = os.getenv('DB_PORT')
 DB_USERNAME = os.getenv('DB_USERNAME')
 DB_PASSWORD = os.getenv('DB_PASSWORD')
+
+MONGO_URI = f'mongodb://{DB_USERNAME}:{DB_PASSWORD}@{DB_HOST}:{DB_PORT}/{DB}'

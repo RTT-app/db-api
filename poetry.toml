@@ -1,4 +1,4 @@
 [virtualenvs]
 create = true
 in-project = true
-prompt = "mongo-API"
+prompt = "db-API"
