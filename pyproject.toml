@@ -4,7 +4,6 @@ version = "0.1.0"
 description = "rest api to manage mongodb"
 authors = ["jordaoa"]
 readme = "README.md"
-packages = [{include = "bd_interface"}]
 
 [tool.poetry.dependencies]
 python = "^3.10"

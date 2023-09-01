@@ -7,5 +7,5 @@ class Post_DTO(BaseModel):
     score: int
 
 class Post_list_DTO(BaseModel):
-    posts: list[Post_DTO]
+    posts: list[dict]
     quantity: int

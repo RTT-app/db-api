@@ -11,6 +11,11 @@ services:
       MONGO_INITDB_ROOT_PASSWORD: jordaoa
     ports:
       - 27017:27017
+    volumes:
+      - ~/mongodb/database:/data/db
+    networks:
+      db-network:
+        ipv4_address: 172.20.0.3
 
   mongo-express:
     image: mongo-express
@@ -21,4 +26,24 @@ services:
     environment:
       ME_CONFIG_MONGODB_ADMINUSERNAME: jordaoa
       ME_CONFIG_MONGODB_ADMINPASSWORD: jordaoa
-      ME_CONFIG_MONGODB_URL: mongodb://jordaoa:jordaoa@mongo:27017/  
+      ME_CONFIG_MONGODB_URL: mongodb://jordaoa:jordaoa@mongo:27017/
+    networks:
+      db-network:
+        ipv4_address: 172.20.0.4
+
+  db-api:
+    image: db-api-tcc
+    container_name: db-api
+    restart: always
+    ports:
+      - 5001:5001
+    networks:
+      db-network:
+        ipv4_address: 172.20.0.5
+
+networks:
+  db-network:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 172.20.0.0/16

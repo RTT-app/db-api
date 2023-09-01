@@ -2,32 +2,18 @@ VENV?=.venv
 PYTHON?=$(VENV)/bin/python3
 PIP?=$(PYTHON) -m pip
 
-run:
-	#@echo "\33[0;32m mongo DB API is Running!\033[0;32m"
-	$(PYTHON) bd_interface/src/main.py
-
+run: docker-up
+	@echo "\33[0;32m mongo DB API is Running!\033[0;32m"
 
 docker-up:
+	@docker build -t db-api-tcc .
 	@docker-compose up -d
 	@echo 'docker-up'
 
-install-poetry: docker-up
-	@if ! command -v poetry &>/dev/null; then \
-		echo "Installing poetry..."; \
-		pip3 install poetry; \
-	fi
-
-venv: install-poetry
-	@echo "Creating the venv..."
-	@poetry install
-	$(PIP) install --upgrade pip
-	@echo "Starting the virtual environment..."
-	@poetry shell
-
 docker-down:
-	@docker stop mongo-ctnr mongo-express-ctnr
-	@docker rm -f mongo-ctnr mongo-express-ctnr
-	@docker rmi mongo:latest mongo-express:latest
+	@docker stop mongo-ctnr mongo-express-ctnr db-api-tcc
+	@docker rm -f mongo-ctnr mongo-express-ctnr db-api-tcc
+	@docker rmi mongo:latest mongo-express:latest db-api-tcc:latest
 	@echo 'docker-down'
 
 clean: docker-down
