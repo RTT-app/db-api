@@ -83,7 +83,7 @@ def delete_post(comment):
 @spec.validate(resp=Response(HTTP_200=Post_list_DTO), tags=["Post"])
 def delete_all_posts():
     """
-    - DELETE alls posts.
+    - DELETE all posts.
     """
     posts = Post.objects().all()
     posts.delete()
