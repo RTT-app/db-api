@@ -4,8 +4,6 @@ PIP?=$(PYTHON) -m pip
 
 run: docker-up
 	@echo "\33[0;32m mongo DB API is Running!\033[0;32m"
-	#$(PYTHON) src/main.py
-
 
 docker-up:
 	@docker build -t db-api-tcc .
