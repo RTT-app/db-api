@@ -15,7 +15,7 @@ services:
       - ~/mongodb/database:/data/db
     networks:
       db-network:
-        ipv4_address: 172.20.0.3
+        ipv4_address: 172.19.0.3
 
   mongo-express:
     image: mongo-express
@@ -29,21 +29,21 @@ services:
       ME_CONFIG_MONGODB_URL: mongodb://jordaoa:jordaoa@mongo:27017/
     networks:
       db-network:
-        ipv4_address: 172.20.0.4
+        ipv4_address: 172.19.0.4
 
   db-api:
     image: db-api-tcc
-    container_name: db-api
+    container_name: db-api-ctnr
     restart: always
     ports:
       - 5001:5001
     networks:
       db-network:
-        ipv4_address: 172.20.0.5
+        ipv4_address: 172.19.0.5
 
 networks:
   db-network:
     driver: bridge
     ipam:
       config:
-        - subnet: 172.20.0.0/16
+        - subnet: 172.19.0.0/16
